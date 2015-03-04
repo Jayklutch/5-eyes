@@ -10,6 +10,15 @@ get '/login' do
   erb :login
 end
 
+get '/sign_up' do
+  #stuff for signing up
+  erb :sign_up
+end
+
+post '/sign_up' do
+  #stuff for signing up
+  end
+
 post '/login' do
   # send logged in data to DB and confirm
 end
