@@ -19,10 +19,10 @@ post '/blink' do
   redirect '/login'
 end
 
-post '/logout' do
-  # logs a user out.
-end
-
 post '/wink' do
   # winks at a user
+end
+
+post '/logout' do
+  session.clear
 end
