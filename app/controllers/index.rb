@@ -6,6 +6,7 @@ get '/' do
 end
 
 get '/login' do
+  @wall_of_blinks = Blink.all
   # show logged in page
   erb :login
 end
@@ -33,6 +34,7 @@ post '/login' do
 end
 
 post '/blink' do
+  @blink = Blink.create!(blink_text: params[:new_blink], user_id: session[:user_name])
   # sends a blink message to the DB and back.
   redirect '/login'
 end
