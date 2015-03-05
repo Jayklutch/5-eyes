@@ -12,12 +12,20 @@
 <hr>
 
 
+
+
 <form action='/login/:blink' method='post'>
             <input size='40' type='text' placeholder='Share your secrets here!' name='new_blink'>
             <input type="Submit" value="Tell the world.">
           </form>
 
-</hr>
+    <% Blink.all.each do |entry| %>
+    <%=User.find(entry.user_id) %>
+    <p> <%= entry.blink %> </p>
+    <% end %>
+
+
+<hr>
 
 <p> Log - Out </p>
 <form action='/logout' method='post'>
