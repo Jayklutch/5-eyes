@@ -1,12 +1,24 @@
 <DOCTYPE='html'>
+<style>
+body {background-color:blue}
+    h1   {font-family: verdana;
+      color: white;}
+</style>
+<h1> Welcome to the iiIii network </h1>
 
-<H1> Welcome to the iiIii network </H1>
 
+<h2> Sign-up Here</h2>
+<a href="/sign_up">Give GCSB personal details</a>
 
 <p> Log - In </p>
-<a href="/login.erb" class="button">Tell GCSB You're online</a>
-<p> Sign-up </p>
-<a href="/login.erb" class="button">Give GCSB personal details</a>
+<form action='/login' method='post'>
+            <input type='text' placeholder='Tell us who you are' name='user_name'>
+             <input type='text' placeholder='Password' name='access_code'>
+            <input type="Submit" value="Tell GCSB you're on-line">
+          </form>
+
+
 <p> Log - Out </p>
-<a href="/login.erb" class="button">
-  Stop sharing intimate details for now</a>
+<form action='/logout' method='post'>
+            <input type="Submit" value="Stop sharing intimate details for a while">
+          </form>

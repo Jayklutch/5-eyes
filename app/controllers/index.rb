@@ -20,6 +20,13 @@ post '/sign_up' do
   end
 
 post '/login' do
+  @user = User.authenticate(params[:user_name],params[:access_code])
+  if @user.nil?
+    redirect '/'
+  else
+    session[:user_name] = @user_id
+    redirect '/login'
+  end
   # send logged in data to DB and confirm
 end
 
