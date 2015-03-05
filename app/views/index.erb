@@ -4,7 +4,11 @@
 
 
 <p> Log - In </p>
-<a href="/login.erb" class="button">Tell GCSB You're online</a>
+<form action='/login' method='post'>
+            <input type='text' placeholder='Tell us who you are' name='user_name'>
+            <input type='submit' name="Tell GCSB you're on-line">
+          </form>
+
 <p> Sign-up </p>
 <a href="/login.erb" class="button">Give GCSB personal details</a>
 <p> Log - Out </p>
