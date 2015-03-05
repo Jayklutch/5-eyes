@@ -2,10 +2,8 @@ enable :sessions
 
 get '/' do
   @session = check_session(session)
-
   if @session
-
-    @wall_of_blinks = Blink.all
+    @wall_of_blinks = Blink.all.to_a
     @eyes = User.all.to_a
     # show logged in page
     erb :login
@@ -33,26 +31,26 @@ end
 post '/sign_up' do
   @session = check_session(session)
   @user=User.create(username: params[:wanted_name], password: params[:access_code])
-if @user.valid?
-  @user.save!
-   redirect '/'
-else
-  @status = "Sorry somebody else has claimed that identity"
-  erb :sign_up
-  #stuff for signing up
+  if @user.valid?
+    @user.save!
+     redirect '/'
+  else
+    @status = "Sorry somebody else has claimed that identity"
+    erb :sign_up
+    #stuff for signing up
   end
 end
 
 post '/login' do
-@session = check_session(session)
-  @user = User.authenticate(params[:user_name],params[:access_code])
-  if @user.nil?
-    redirect '/'
-  else
-    session[:user_id] = @user.id
-    redirect '/'
-  end
-  #send logged in data to DB and confirm
+  @session = check_session(session)
+    @user = User.authenticate(params[:user_name],params[:access_code])
+    if @user.nil?
+      redirect '/'
+    else
+      session[:user_id] = @user.id
+      redirect '/'
+    end
+    #send logged in data to DB and confirm
 end
 
 post '/blink' do
