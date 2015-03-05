@@ -124,6 +124,13 @@ namespace :db do
       system "rake db:migrate RACK_ENV=test"
     end
   end
+
+  desc "Migrate test database"
+  task :prepare do
+    system "rake db:drop RACK_ENV=test"
+    system "rake db:create RACK_ENV=test"
+    system "rake db:migrate RACK_ENV=test"
+  end
 end
 
 desc 'Start IRB with application environment loaded'

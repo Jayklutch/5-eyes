@@ -27,14 +27,14 @@ post '/login' do
   if @user.nil?
     redirect '/'
   else
-    session[:user_name] = @user_id
+    session[:user_id] = @user.id
     redirect '/login'
   end
   # send logged in data to DB and confirm
 end
 
 post '/blink' do
-  @blink = Blink.create!(blink_text: params[:new_blink], user_id: session[:user_name])
+  @blink = Blink.create!(blink_text: params[:new_blink], user_id: session[:user_id])
   # sends a blink message to the DB and back.
   redirect '/login'
 end

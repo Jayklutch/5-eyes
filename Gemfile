@@ -18,8 +18,9 @@ gem 'shotgun'
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
-  gem 'rspec'
+  gem 'rspec', '3.1.0'
   gem 'capybara'
+  gem 'launchy'
 end
 
 group :test, :development do
