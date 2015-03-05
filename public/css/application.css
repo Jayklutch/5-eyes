@@ -1,5 +1,11 @@
+html {
+
+  background-image: ("../../boo.jpg");
+  background-color: #3385FF;
+}
+
 body {
-    background-color:#3385FF}
+    }
 
 h1   {font-family: verdana;
       color: white}
