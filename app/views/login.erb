@@ -14,15 +14,14 @@
 
 
 
-<form action='/login/:blink' method='post'>
+<form action='/blink' method='post'>
             <input size='40' type='text' placeholder='Share your secrets here!' name='new_blink'>
             <input type="Submit" value="Tell the world.">
           </form>
 
-    <% Blink.all.each do |entry| %>
-    <%=User.find(entry.user_id) %>
-    <p> <%= entry.blink %> </p>
-    <% end %>
+   <p> <% @wall_of_blinks.each do |entry| %>
+    <%= entry.blink_text %>
+    <% end %></p>
 
 
 <hr>
