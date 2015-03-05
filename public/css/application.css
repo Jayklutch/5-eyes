@@ -1,3 +1,10 @@
+body {
+    background-color:#3385FF}
+
+h1   {font-family: verdana;
+      color: white}
+
+
 #rainbow {
     background: red; /* not working, let's see some red */
     background: -moz-linear-gradient( top ,
