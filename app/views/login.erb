@@ -1,4 +1,8 @@
-<H1> Congrats on loggin in comrade,</H1>
+<% if @session %>
+  <% eye = @eyes.find{ |user| user.id == session[:user_id]} %>
+<h1 align="center"> Congrats on loggin in, <%= eye.username %> </h1>
+<%end%>
+
 
 <table>
   <tr>

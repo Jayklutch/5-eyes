@@ -2,7 +2,9 @@ enable :sessions
 
 get '/' do
   @session = check_session(session)
+
   if @session
+
     @wall_of_blinks = Blink.all
     @eyes = User.all.to_a
     # show logged in page
