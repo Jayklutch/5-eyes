@@ -1,6 +1,5 @@
 html {
 
-  background-image: ("../../boo.jpg");
   background-color: #3385FF;
 }
 
@@ -11,9 +10,9 @@ h1   {font-family: verdana;
       color: white}
 
 
-#rainbow {
+/* #rainbow {
     background: red; /* not working, let's see some red */
-    background: -moz-linear-gradient( top ,
+   /* background: -moz-linear-gradient( top ,
         rgba(255, 0, 0, 1) 0%,
         rgba(255, 255, 0, 1) 15%,
         rgba(0, 255, 0, 1) 30%,
