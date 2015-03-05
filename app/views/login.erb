@@ -11,16 +11,16 @@
 
 <hr>
 
-
-
-
 <form action='/blink' method='post'>
             <input size='40' type='text' placeholder='Share your secrets here!' maxlength="140" name='new_blink'>
             <input type="Submit" value="Tell the world.">
           </form>
 
+
+
     <% @wall_of_blinks.each do |entry| %>
-      <p>  <%= entry.blink_text %></p>
+      <% eye = @eyes.find{ |user| user.id == entry.user_id} %>
+      <p> @<%= eye.username %>: <%= entry.blink_text %> </p>
     <% end %>
 
 
