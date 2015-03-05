@@ -16,6 +16,8 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
+  User.create!(username: params[:wanted_name], password: params[:access_code])
+  redirect '/'
   #stuff for signing up
   end
 
@@ -41,4 +43,5 @@ end
 
 post '/logout' do
   session.clear
+  redirect '/'
 end
