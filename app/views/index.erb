@@ -2,27 +2,31 @@
 <link rel="stylesheet" type="text/css" href="../public/css/application.css">
 </head>
 <p align="center"><img src= "http://photoshoptrainingchannel.com/wp-content/uploads/2012/12/amazing-eyes-photoshop.jpg" height="200" width="1000" ></p>
-<div id='rainbow'>
+
 <h1 align="center"> Welcome to the iiiii network </h1>
 
+<div align="center" width="500">
 <% if @session  == nil %>
-  <h2> Sign-up Here </h2>
+  <h2 align="center" width="500">Sign-up Here</h2>
     <a href="/sign_up">Give GCSB personal details</a>
 <% end %>
+</div>
 
+<div align="center" width="500">
 <% if @session  == nil %>
-  <h2> Log - In </h2>
+  <h2 align="center" width="500"> Log - In </h2>
     <form action='/login' method='post'>
       <input type='text' placeholder='Alias' name='user_name'>
        <input type='password' placeholder="'Password'" name='access_code'>
       <input type="Submit" value="Tell GCSB you're on-line">
     </form>
 <%end%>
+</div>
 
 <% if @session %>
   <p> Log - Out </p>
     <form action='/logout' method='post'>
       <input type="Submit" value="Stop sharing intimate details for a while">
     </form>
-</div>
+
 <%end%>
