@@ -12,15 +12,22 @@ get '/login' do
 end
 
 get '/sign_up' do
+  @status = "Sign your life away below"
   #stuff for signing up
   erb :sign_up
 end
 
 post '/sign_up' do
-  User.create!(username: params[:wanted_name], password: params[:access_code])
+  @user=User.create(username: params[:wanted_name], password: params[:access_code])
+if @user.valid?
+  @user.save!
   redirect '/'
+else
+  @status = "Sorry somebody else has claimed that identity"
+  erb :sign_up
   #stuff for signing up
   end
+end
 
 post '/login' do
   @user = User.authenticate(params[:user_name],params[:access_code])
