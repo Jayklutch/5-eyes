@@ -19,10 +19,9 @@
             <input type="Submit" value="Tell the world.">
           </form>
 
-    <% Blink.all.each do |entry| %>
-    <%=User.find(entry.user_id) %>
-    <p> <%= entry.blink %> </p>
-    <% end %>
+   <p> <% @wall_of_blinks.each do |entry| %>
+    <%= entry.blink_text %>
+    <% end %></p>
 
 
 <hr>
