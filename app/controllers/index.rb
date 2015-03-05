@@ -22,7 +22,7 @@ get '/login' do
 end
 
 get '/sign_up' do
-  @session = check_session(session)
+  @status = "Sign your life away below"
   @session = check_session(session)
   #stuff for signing up
   erb :sign_up
@@ -30,10 +30,16 @@ end
 
 post '/sign_up' do
   @session = check_session(session)
-  User.create!(username: params[:wanted_name], password: params[:access_code])
-  redirect '/'
+  @user=User.create(username: params[:wanted_name], password: params[:access_code])
+if @user.valid?
+  @user.save!
+   redirect '/'
+else
+  @status = "Sorry somebody else has claimed that identity"
+  erb :sign_up
   #stuff for signing up
   end
+end
 
 post '/login' do
 @session = check_session(session)
