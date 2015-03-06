@@ -1,3 +1,5 @@
+  <% @user_array = [] %>
+  <% @blink_array = [] %>
 <% if @session %>
   <% eye = @eyes.find{ |user| user.id == session[:user_id]} %>
   <h1 align="center"> Congrats on loggin in, <%= eye.username %> </h1>
@@ -20,8 +22,13 @@
   </form>
   <% @wall_of_blinks.each do |entry| %>
     <% eye = @eyes.find{ |user| user.id == entry.user_id} %>
-    <p> <%= eye.username %>: <%= entry.blink_text %> </p>
-  <% end %>
+     <% @user_array << eye.username %>
+     <% @blink_array << entry.blink_text %>
+     <% end %>
+     <% @user_array.length.times do %>
+    <p> <%= @user_array.pop %>: <%= @blink_array.pop %> </p>
+    <% end %>
+
 <hr>
 
 <p> Log - Out </p>
