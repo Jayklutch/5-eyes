@@ -5,7 +5,7 @@ get '/' do
   if @session
     @wall_of_blinks = Blink.all.to_a
     @eyes = User.all.to_a
-
+    @current_user = User.find(session[:user_id])
     # show logged in page
     erb :login
   else
