@@ -34,7 +34,8 @@ post '/sign_up' do
   @user=User.create(username: params[:wanted_name], password: params[:access_code])
   if @user.valid?
     @user.save!
-    redirect '/'
+    session[:user_id] = @user.id
+    redirect '/login'
   else
     if @user.errors.messages[:username][0].include?("taken")
       @status = "Sorry someone has already claimed that identity"
@@ -42,7 +43,6 @@ post '/sign_up' do
       @status = "You don't appear to be a country"
     end
     erb :sign_up
-     redirect '/'
   end
 end
 
@@ -66,6 +66,12 @@ post '/blink' do
   end# sends a blink message to the DB and back.
   redirect '/login'
 end
+
+get '/current_friends' do
+@friends = User.all
+erb :current_friends
+end
+
 
 post '/wink' do
   @session = check_session(session)

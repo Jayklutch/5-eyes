@@ -1,0 +1,19 @@
+<p align="center"><img src= "http://photoshoptrainingchannel.com/wp-content/uploads/2012/12/amazing-eyes-photoshop.jpg" height="200" width="1000" ></p>
+
+<h1> Meet some of your fellow signed up Countries here </h1>
+
+<% @friends.each do |country| %>
+   <h3> <%= country.username %> </h3>
+   <hr>
+     <% end %>
+
+<p> Return Home </p>
+<form action='/' method='post'>
+  <input type="Submit" value="Go Home, You're drunk">
+</form>
+
+
+<p> Log - Out </p>
+<form action='/logout' method='post'>
+  <input type="Submit" value="Stop sharing intimate details for a while">
+</form>
