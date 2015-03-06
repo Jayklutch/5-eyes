@@ -6,15 +6,20 @@
   <h1> Congrats on loggin in, <%= @current_user.username %> </h1>
 <%end%>
 
+
 <table>
   <tr>
     <td>
       <p>Here are some sweet blinks, all of these have been recorded and sent to the U.S.A for "analysis"<p>
     </td>
   </tr>
-  <tr>
-  </tr>
 </table>
+
+<div align="right">
+<form action='/logout' method='post'>
+  <input type="Submit" value="Stop sharing intimate details for a while">
+</form>
+</div>
 
 <hr>
   <form action='/blink' method='post'>
@@ -27,19 +32,16 @@
      <% @blink_array << entry.blink_text %>
      <% end %>
      <% @user_array.length.times do %>
-    <p> <%= @user_array.pop %>: <%= @blink_array.pop %> </p>
+    <p id='white'> <span class='red'><%= @user_array.pop %>:</span> <%= @blink_array.pop %> </p>
     <% end %>
 
 <hr>
 
 <p> See "Friends" </p>
 <form action='/current_friends' method='get'>
-  <input type="Submit" value="See who else was silly enough to sign up">
+  <input type="Submit" value="View the other eyes">
 </form>
 
 
-<p> Log - Out </p>
-<form action='/logout' method='post'>
-  <input type="Submit" value="Stop sharing intimate details for a while">
-</form>
+
 </div>

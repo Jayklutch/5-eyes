@@ -1,13 +1,29 @@
 html {
 
+    margin: 0 100px 0 100px;
   background-color: #3385FF;
 }
 
-body {
-    }
+a:visited {
+    color: #00FF00;
+}
 
-h1   {font-family: verdana;
+a:link {
+    color: #FF0000;
+}
+
+a:hover {
+    color: #FF00FF;
+}
+
+h1  {font-family: verdana;
       color: white}
+
+#white {font-family: verdana;
+      color: white}
+
+.red {font-family: verdana;
+      color: maroon; font-weight: bold;}
 
 
 /* #rainbow {
