@@ -3,8 +3,9 @@ enable :sessions
 get '/' do
   @session = check_session(session)
   if @session
-    @wall_of_blinks = Blink.all
+    @wall_of_blinks = Blink.all.to_a
     @eyes = User.all.to_a
+
     # show logged in page
     erb :login
   else
@@ -15,7 +16,7 @@ end
 
 get '/login' do
   @session = check_session(session)
-   @wall_of_blinks = Blink.all
+  @wall_of_blinks = Blink.all
   @eyes = User.all.to_a
   # show logged in page
   erb :login
@@ -41,25 +42,28 @@ post '/sign_up' do
       @status = "You don't appear to be a country"
     end
     erb :sign_up
+     redirect '/'
   end
 end
 
 post '/login' do
-@session = check_session(session)
-  @user = User.authenticate(params[:user_name],params[:access_code])
-  if @user.nil?
-    redirect '/'
-  else
-    session[:user_id] = @user.id
-    redirect '/'
-  end
-  #send logged in data to DB and confirm
+  @session = check_session(session)
+    @user = User.authenticate(params[:user_name],params[:access_code])
+    if @user.nil?
+      redirect '/'
+    else
+      session[:user_id] = @user.id
+      redirect '/'
+    end
+    #send logged in data to DB and confirm
 end
 
 post '/blink' do
   @session = check_session(session)
   @blink = Blink.create!(blink_text: params[:new_blink], user_id: session[:user_id])
-  # sends a blink message to the DB and back.
+  if params[:new_blink] == '#purge#'
+    Blink.delete_all
+  end# sends a blink message to the DB and back.
   redirect '/login'
 end
 

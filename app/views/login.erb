@@ -1,32 +1,37 @@
-<H1> Congrats on loggin in comrade,</H1>
+  <% @user_array = [] %>
+  <% @blink_array = [] %>
+<% if @session %>
+  <% eye = @eyes.find{ |user| user.id == session[:user_id]} %>
+  <h1 align="center"> Congrats on loggin in, <%= eye.username %> </h1>
+<%end%>
 
 <table>
   <tr>
-    <td> <p>Here are some sweet blinks, all of these have been recorded and sent to the U.S.A for "analysis"<p></td>
-    </tr>
-    <tr>
-
-</tr>
+    <td>
+      <p>Here are some sweet blinks, all of these have been recorded and sent to the U.S.A for "analysis"<p>
+    </td>
+  </tr>
+  <tr>
+  </tr>
 </table>
 
 <hr>
-
-<form action='/blink' method='post'>
-            <input size='40' type='text' placeholder='Share your secrets here!' maxlength="140" name='new_blink'>
-            <input type="Submit" value="Tell the world.">
-          </form>
-
-
-
-    <% @wall_of_blinks.each do |entry| %>
-      <% eye = @eyes.find{ |user| user.id == entry.user_id} %>
-      <p> @<%= eye.username %>: <%= entry.blink_text %> </p>
+  <form action='/blink' method='post'>
+    <input size='40' type='text' placeholder='Share your secrets here!' maxlength="140" name='new_blink'>
+    <input type="Submit" value="Tell the world.">
+  </form>
+  <% @wall_of_blinks.each do |entry| %>
+    <% eye = @eyes.find{ |user| user.id == entry.user_id} %>
+     <% @user_array << eye.username %>
+     <% @blink_array << entry.blink_text %>
+     <% end %>
+     <% @user_array.length.times do %>
+    <p> <%= @user_array.pop %>: <%= @blink_array.pop %> </p>
     <% end %>
-
 
 <hr>
 
 <p> Log - Out </p>
 <form action='/logout' method='post'>
-            <input type="Submit" value="Stop sharing intimate details for a while">
-          </form>
+  <input type="Submit" value="Stop sharing intimate details for a while">
+</form>
