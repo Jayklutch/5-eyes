@@ -31,13 +31,16 @@ end
 post '/sign_up' do
   @session = check_session(session)
   @user=User.create(username: params[:wanted_name], password: params[:access_code])
-if @user.valid?
-  @user.save!
-   redirect '/'
-else
-  @status = "Sorry somebody else has claimed that identity"
-  erb :sign_up
-  #stuff for signing up
+  if @user.valid?
+    @user.save!
+    redirect '/'
+  else
+    if @user.errors.messages[:username][0].include?("taken")
+      @status = "Sorry someone has already claimed that identity"
+    else
+      @status = "You don't appear to be a country"
+    end
+    erb :sign_up
   end
 end
 
