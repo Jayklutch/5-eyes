@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   def country
     countries = []
-    File.open('../../friends.txt').each do |line|
+    File.open('friends.txt').each do |line|
       countries << line.chomp
     end
     if !countries.include?(username)

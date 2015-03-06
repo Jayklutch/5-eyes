@@ -1,8 +1,9 @@
+
+<div align="center" width="500">
   <% @user_array = [] %>
   <% @blink_array = [] %>
-<% if @session %>
-  <% eye = @eyes.find{ |user| user.id == session[:user_id]} %>
-  <h1 align="center"> Congrats on loggin in, <%= eye.username %> </h1>
+<% if @current_user %>
+  <h1> Congrats on loggin in, <%= @current_user.username %> </h1>
 <%end%>
 
 <table>
@@ -41,3 +42,4 @@
 <form action='/logout' method='post'>
   <input type="Submit" value="Stop sharing intimate details for a while">
 </form>
+</div>

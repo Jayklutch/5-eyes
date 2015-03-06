@@ -18,6 +18,7 @@ get '/login' do
   @session = check_session(session)
   @wall_of_blinks = Blink.all
   @eyes = User.all.to_a
+  @current_user = User.find(session[:user_id])
   # show logged in page
   erb :login
 end
